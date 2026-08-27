@@ -33,6 +33,58 @@ public class Task {
 
     private LocalDateTime updatedAt;
 
+    protected Task() {}
+    public Task(String title, String description, TaskStatus status, LocalDate dueDate) {
+        this.title = title;
+        this.description = description;
+        this.status = status;
+        this.dueDate = dueDate;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+    
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public TaskStatus getStatus() {
+        return status;
+    }
+
+    public void setStatus(TaskStatus status) {
+        this.status = status;
+    }
+
+    public LocalDate getDueDate() {
+        return dueDate;
+    }
+
+    public void setDueDate(LocalDate dueDate) {
+        this.dueDate = dueDate;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+    
+    public LocalDateTime getUpdatedAt() {
+        return updatedAt;
+    }
+
     @PrePersist
     private void prePersist() {
         createdAt = LocalDateTime.now();
@@ -43,4 +95,5 @@ public class Task {
     private void preUpdate() {
         updatedAt = LocalDateTime.now();
     }
+
 }
