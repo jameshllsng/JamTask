@@ -1,5 +1,7 @@
 package com.jamtask.service;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
 import com.jamtask.entity.Task;
@@ -15,5 +17,9 @@ public class TaskService {
 
     public Task createTask(Task task) {
         return taskRepository.save(task);
+    }
+
+    public List<Task> findAllTasks() {
+        return taskRepository.findAll();
     }
 }
