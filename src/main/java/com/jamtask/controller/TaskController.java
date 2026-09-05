@@ -6,6 +6,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -37,5 +38,12 @@ public class TaskController {
     public String listTasks(Model model) {
         model.addAttribute("tasks", taskService.findAllTasks());
         return "tasks/list";
+    }
+
+    @GetMapping("/tasks/{id}/edit")
+    public String showEditForm(@PathVariable Long id, Model model) {
+        Task task = taskService.findTaskById(id);
+        model.addAttribute("task", task);
+        return "tasks/edit";
     }
 }
