@@ -46,4 +46,10 @@ public class TaskController {
         model.addAttribute("task", task);
         return "tasks/edit";
     }
+
+    @PostMapping("/tasks/{id}")
+    public String updateTask(@PathVariable Long id, @RequestParam String title, @RequestParam String description, @RequestParam TaskStatus status, @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate dueDate) {
+        taskService.updateTask(id, title, description, status, dueDate);
+        return "redirect:/tasks";
+    }
 }
